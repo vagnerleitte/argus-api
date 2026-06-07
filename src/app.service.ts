@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -99,5 +99,19 @@ export class AppService {
 
   listApplications() {
     return this.readApplications();
+  }
+
+  getApplication(id: string) {
+    const applications = this.readApplications();
+    const record = applications.find((item) => item.id === id);
+
+    if (!record) {
+      throw new NotFoundException(`Aplicação com id "${id}" não encontrada.`);
+    }
+
+    return {
+      ...record,
+      fileExists: record.fileName ? fs.existsSync(path.join(this.uploadsDir, record.fileName)) : false,
+    };
   }
 }

@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -49,5 +50,10 @@ export class AppController {
   @Get('applications')
   listApplications(): any {
     return this.appService.listApplications();
+  }
+
+  @Get('applications/:id')
+  getApplication(@Param('id') id: string): any {
+    return this.appService.getApplication(id);
   }
 }
