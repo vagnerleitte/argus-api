@@ -1,4 +1,8 @@
 node_modules
+.DS_Store
 /dist
 /uploads
 /data
+/reports
+/ai-responses
+.env
