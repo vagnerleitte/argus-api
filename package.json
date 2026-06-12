@@ -28,7 +28,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "@nestjs/cli": "^10.4.7",
+    "@nestjs/cli": "^11.0.23",
     "@types/adm-zip": "^0.5.8",
     "@types/express": "^5.0.6",
     "@types/multer": "^2.1.0",
